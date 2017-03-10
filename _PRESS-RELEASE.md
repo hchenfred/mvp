@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Job search tracker
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > The product is for customers looking for a job and wanting to keep track of their job applications.
+
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > It allows users to apply for jobs from this site and to save positions they apply with a click. The positions avaiable in this site are from other job search sites' API.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Ease the pain of saving positions that users apply online. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > It uses other job search websites' API to list positions based on user's search. Users could easily save positions they are intersted in and positions they apply for.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Your job search buddy!
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Use Github job search API to get started for pulling job data.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > Instead of going to 10 different sites to apply for jobs, I could go to this one website and easily save positions I am interested in with a click.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Please go to README for instructions on how to use this app.
