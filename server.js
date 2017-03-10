@@ -10,6 +10,10 @@ app.use(express.static(__dirname + '/www'));
  
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
+  watchOptions: {
+        aggregateTimeout: 300,
+        poll: true
+  },
   filename: 'bundle.js',
   publicPath: '/',
   stats: {

@@ -1,26 +1,31 @@
 import React from 'react';
+import $ from 'jquery';
  
-/**
- * A counter button: tap the button to increase the count.
- */
+
 class Counter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
+  constructor(props) {
+    super(props);
+    this.state = { 
+      items: []
+    }
   }
- 
-  render() {
-    return (
-      <button
-        onClick={() => {
-          this.setState({ count: this.state.count + 1 });
-        }}
-      >
-        Count: {this.state.count}
-      </button>
-    );
+
+  componentDidMount() {
+
+    $.ajax({
+      url: 'https://jobs.github.com/positions.json?description=python&location=new+york', 
+      dataType: 'jsonp',
+      success: function(data) {
+        this.setState({ items: data })
+      }.bind(this),
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+  }
+
+  render () {
+    return (<div>something something!!!!!!adfafssfgood stuff</div>);
   }
 }
 export default Counter;
