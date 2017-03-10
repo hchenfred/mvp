@@ -4,15 +4,27 @@
   "description": "My Project",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
+    "compile": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^6.23.1",
-    "babel-loader": "^6.4.0",
-    "babel-preset-latest": "^6.22.0",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "express": "^4.15.0",
+    "angular": "^1.6.3",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "jquery": "^3.1.1",
+    "mongoose": "^4.8.6",
+    "mysql": "^2.13.0"
   }
 }
