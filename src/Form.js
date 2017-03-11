@@ -2,14 +2,14 @@ import React from 'react';
 
 const Form = (props) => (
   <form onSubmit={props.handleSubmit}>
-    <label>
-      Location:
+    <div>
+      <label>Location:</label>
       <input type="text" onChange={(e) => props.handleLocationChange(e.target.value)}/>
-    </label>
-    <label>
-      Description contains:
+    </div>
+    <div>
+      <label>Enter Keywords:</label>
       <input type="text" onChange={(e) => props.handlePositionChange(e.target.value)}/>
-    </label>
+    </div>
     <input type="submit" value="Submit" />
   </form>
 )

@@ -20,11 +20,3 @@ exports.createJobRecord = function(data) {
   var job = new exports.AppliedJob({title: data.title, location: data.location, type: data.type, company: data.company, created_at: data.created_at});
   job.save().then((job) => console.log('a new position is saved to appliedjobs table'));
 }
-// var job1 = new exports.AppliedJob({ title: 'full stack engineer' });
-
-
-// job1.save().then(function(job) {
-//   console.log('a job is save to table in MongoDB', job.title);
-// });
-
-//exports = db;

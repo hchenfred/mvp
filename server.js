@@ -25,8 +25,8 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-app.post('/jobs', function(req, res){
-  console.log('post request from hi', req.body);
+app.post('/jobs', function(req, res) {
+  //console.log('post request from hi', req.body);
   var data = {
     title: req.body.title,
     location: req.body.location, 
@@ -35,8 +35,13 @@ app.post('/jobs', function(req, res){
     created_at: req.body.created_at
   }
   testdb.createJobRecord(data);
+});
 
-  res.send('hello world!!!!!!!!!');
+app.get('/jobs', function(req, res) {
+  testdb.AppliedJob.find({}, function(errs, results) {
+    console.log(results);
+    res.json(results);
+  });
 });
 
 
