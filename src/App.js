@@ -2,11 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import JobTable from './JobTable.js';
 import Form from './Form.js';
+import postJobAsync from './utility.js';
  
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.favoriates = [];
+    this.appliedJobs = [];
     this.state = { 
       jobs: [],
       location: '',
@@ -15,6 +18,8 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handlePositionChange = this.handlePositionChange.bind(this);
+    this.handleAppliedJob = this.handleAppliedJob.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
   }
 
 
@@ -47,6 +52,16 @@ class App extends React.Component {
     this.setState({position: text});
   }
 
+  handleFavorite(job) {
+    console.log('handle adding to favoriate list', job);
+  }
+
+  handleAppliedJob(job) {
+    console.log('handle adding to applied job list', job);
+    console.log(job);
+    postJobAsync('/jobs', job);
+  }
+
 
   componentDidMount() {
     $.ajax({
@@ -65,7 +80,7 @@ class App extends React.Component {
     return (
       <div>good stuff
         <Form handleSubmit={this.handleSubmit} handleLocationChange={this.handleLocationChange} handlePositionChange={this.handlePositionChange}/>
-        <JobTable jobs={this.state.jobs}/>
+        <JobTable jobs={this.state.jobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>
       </div>);
   }
 }

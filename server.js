@@ -3,6 +3,12 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const app = express();
+var bodyParser = require('body-parser');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
  
 const compiler = webpack(webpackConfig);
  
@@ -21,8 +27,8 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-app.get('/hi', function(req, res){
-  console.log('get request from hi');
+app.post('/jobs', function(req, res){
+  console.log('post request from hi', req.body);
   res.send('hello world!!!!!!!!!');
 });
  

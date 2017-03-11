@@ -3,7 +3,7 @@ import React from 'react';
 const Form = (props) => (
   <form onSubmit={props.handleSubmit}>
     <label>
-      Enter location:
+      Location:
       <input type="text" onChange={(e) => props.handleLocationChange(e.target.value)}/>
     </label>
     <label>

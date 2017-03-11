@@ -4,7 +4,7 @@ import Job from './Job.js';
 const JobTable = (props) => (
   <div>
     <ul>
-      {props.jobs.map((job) => <Job key={job.id} job={job}/>)}
+      {props.jobs.map((job) => <Job key={job.id} job={job} handleAppliedJob={props.handleAppliedJob} handleFavorite={props.handleFavorite}/>)}
     </ul> 
   </div>
 )
