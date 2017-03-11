@@ -3,9 +3,8 @@ import Job from './Job.js';
 
 const JobTable = (props) => (
   <div>
-    <h4> This is my job table </h4>
     <ul>
-      {props.jobs.map((job) => <Job job = {job}/>)}
+      {props.jobs.map((job) => <Job key={job.id} job={job}/>)}
     </ul> 
   </div>
 )
