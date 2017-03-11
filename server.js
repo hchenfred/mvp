@@ -3,11 +3,9 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const app = express();
-var bodyParser = require('body-parser');
-// parse application/x-www-form-urlencoded
+const testdb = require('./db/config.js');
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
 app.use(bodyParser.json());
  
 const compiler = webpack(webpackConfig);
@@ -29,8 +27,19 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.post('/jobs', function(req, res){
   console.log('post request from hi', req.body);
+  var data = {
+    title: req.body.title,
+    location: req.body.location, 
+    type: req.body.type, 
+    company: req.body.company, 
+    created_at: req.body.created_at
+  }
+  testdb.createJobRecord(data);
+
   res.send('hello world!!!!!!!!!');
 });
+
+
  
  
 const server = app.listen(3000, function() {
