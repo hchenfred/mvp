@@ -38,15 +38,32 @@ app.post('/jobs', function(req, res) {
   testdb.createJobRecord(data);
 });
 
+app.post('/savedjobs', function(req, res) {
+  //console.log('post request from hi', req.body);
+  var data = {
+    title: req.body.title,
+    location: req.body.location, 
+    type: req.body.type, 
+    company: req.body.company, 
+    company_logo: req.body.company_logo,
+    created_at: req.body.created_at
+  }
+  testdb.createInterestedRecord(data);
+});
+
 app.get('/jobs', function(req, res) {
   testdb.AppliedJob.find({}, function(errs, results) {
-    console.log(results);
+    //console.log(results);
     res.json(results);
   });
 });
 
-
- 
+app.get('/savedjobs', function(req, res) {
+  testdb.InterestedJob.find({}, function(errs, results) {
+    //console.log(results);
+    res.json(results);
+  });
+});
  
 const server = app.listen(3000, function() {
   const host = server.address().address;

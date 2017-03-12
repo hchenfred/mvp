@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.appliedJobs = [];
+    this.interestedJobs = [];
     this.state = { 
       jobs: [],
       location: '',
@@ -32,16 +33,26 @@ class App extends React.Component {
       fetch('/jobs')
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         responseJson.forEach((item) => this.appliedJobs.push(item));
-        console.log('==========', this.appliedJobs);
         this.setState({selectedFilter: 'applied'});
       })
       .catch((error) => {
         console.error(error);
       });
     } else if (selectedValue === 'Interested Jobs') {
-      this.setState({selectedFilter: 'Interested'});
+      console.log('entering here ===========>>>');
+      this.interestedJobs = [];
+      fetch('/savedjobs')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        responseJson.forEach((item) => this.interestedJobs.push(item));
+        console.log('interested', this.interestedJobs);
+        this.setState({selectedFilter: 'interested'});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+     
     } else {
       this.setState({selectedFilter: 'all'});
     }
@@ -76,6 +87,7 @@ class App extends React.Component {
 
   handleFavorite(job) {
     console.log('handle adding to favoriate list', job);
+    postJobAsync('/savedjobs', job);
   }
 
   handleAppliedJob(job) {
@@ -98,7 +110,15 @@ class App extends React.Component {
   }
       
   render () {
-    var jobTable =  this.state.selectedFilter === 'applied' ? (<JobTable jobs={this.appliedJobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>) : (<JobTable jobs={this.state.jobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>)
+    var jobTable = '';
+    if (this.state.selectedFilter === 'applied') {
+      jobTable = (<JobTable jobs={this.appliedJobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>)
+    } else if (this.state.selectedFilter === 'interested') {
+      jobTable = (<JobTable jobs={this.interestedJobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>)
+    } else {
+      jobTable = (<JobTable jobs={this.state.jobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>)
+    }
+    // var jobTable =  this.state.selectedFilter === 'applied' ? (<JobTable jobs={this.appliedJobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>) : (<JobTable jobs={this.state.jobs} handleAppliedJob={this.handleAppliedJob} handleFavorite={this.handleFavorite}/>)
 
 
     return (

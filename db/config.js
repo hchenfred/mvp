@@ -27,7 +27,13 @@ var interestedJobSchema = mongoose.Schema({
 
 exports.AppliedJob = mongoose.model('AppliedJob', appliedJobSchema);
 exports.InterestedJob = mongoose.model('InterestedJob', interestedJobSchema);
+
 exports.createJobRecord = function(data) {
   var job = new exports.AppliedJob({title: data.title, location: data.location, type: data.type, company: data.company, company_logo: data.company_logo, created_at: data.created_at});
   job.save().then((job) => console.log('a new position is saved to appliedjobs table'));
+}
+
+exports.createInterestedRecord = function(data) {
+  var job = new exports.InterestedJob({title: data.title, location: data.location, type: data.type, company: data.company, company_logo: data.company_logo, created_at: data.created_at});
+  job.save().then((job) => console.log('a new position is saved to interested jobs table'));
 }
