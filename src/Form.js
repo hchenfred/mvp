@@ -1,16 +1,16 @@
 import React from 'react';
 
 const Form = (props) => (
-  <form onSubmit={props.handleSubmit}>
+  <form className="col-md-6 col-md-offset-3" onSubmit={props.handleSubmit}>
     <div>
-      <label>Location:</label>
-      <input type="text" onChange={(e) => props.handleLocationChange(e.target.value)}/>
+      <label className="form-group">Location:</label>
+      <input type="text" className="form-control" onChange={(e) => props.handleLocationChange(e.target.value)}/>
     </div>
     <div>
-      <label>Enter Keywords:</label>
-      <input type="text" onChange={(e) => props.handlePositionChange(e.target.value)}/>
+      <label className="form-group">Enter Keywords:</label>
+      <input type="text" className="form-control" onChange={(e) => props.handlePositionChange(e.target.value)}/>
     </div>
-    <input type="submit" value="Submit" />
+    <input type="button" className="btn btn-primary btn-sm btn-space" type="submit" value="Submit" />
   </form>
 )
 

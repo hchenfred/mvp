@@ -28,7 +28,7 @@ class App extends React.Component {
     console.log('Handle dropdownlist selection', event.target.value);
     var selectedValue = event.target.value;
     if (selectedValue === 'Applied Jobs') {
-      this.appliedjobs = [];
+      this.appliedJobs = [];
       fetch('/jobs')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -105,10 +105,10 @@ class App extends React.Component {
       <div className='container'>
         <h1></h1>
         <div className='row'>
-          <DropDownList handleSelectedFilter={this.handleSelectedFilter}/>
-        </div>
-        <div className='row'>
           <Form handleSubmit={this.handleSubmit} handleLocationChange={this.handleLocationChange} handlePositionChange={this.handlePositionChange}/>
+        </div>
+        <div className='row col-md-6 col-md-offset-3'>
+          <DropDownList handleSelectedFilter={this.handleSelectedFilter}/>
         </div>
         <div className='row'>
           {jobTable}

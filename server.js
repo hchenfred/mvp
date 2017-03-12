@@ -32,6 +32,7 @@ app.post('/jobs', function(req, res) {
     location: req.body.location, 
     type: req.body.type, 
     company: req.body.company, 
+    company_logo: req.body.company_logo,
     created_at: req.body.created_at
   }
   testdb.createJobRecord(data);
